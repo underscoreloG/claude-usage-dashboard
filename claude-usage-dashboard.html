@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude usage dashboard (standalone)</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAQKADAAQAAAABAAAAQAAAAACU3PoRAAAACXBIWXMAABYlAAAWJQFJUiTwAAABzWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+MTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MTAyNDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4xMDI0PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CsHtO6kAABcYSURBVHgB7VtpkFzVdT79XnfPdE/PvmlmhMS+msUIBBQmgADhGBHHrCEBi0qqqMShChJjJ/+CUyExMZWtnEpwKgaxBMTiYt8UEwjGiM0GIwTCbBLSjDT7aLbued3v5fu++97MSJoeRPIzuqPX7727nHvOd5Z77u2W2YFyAIEDCBxA4AAC/38RSP1fRP/wpms6iv5MVzrltYZhpcFSqVqLUpnIM98Po1QQRTF9T9N4vllovnmVQO+h7+E5RB3uaDM+s46teE6Kn/ajSgRioVUsFQUWRUXPi3aXI2+oUsn2nXjb3f1J3y96/8IAbLzhqs7mXOXqVMr7ukV2NPhq8T3P91MpyG+48CFJK+AT7HAGPqQ8tasqioVDHQtouHGoj1jH7viISCvEi4exUUX1rAvRGlYqVokIiA2nouh9PDw6Nm33nP6P9+0S0f38IHv7XTZ996q1tenU97KeLa+AsTKuEMyTKQAiQUzCSUwJ4UQh7+ijT8mBarxzLGbXne94Zr+4h0AhOAIPLXpmOwDhPCk24TXjpcxPp20mKG+dKpVvPuHvHrwTRParcLbPLTefc076ipUdP8j5/o3UXRnok1EnZswgKDkG0UFMkzQv9EQXiTorJIWOm0WHNNA3JHXc+UzqpENrwl1VaA8BNORVHa0lAhAe2qmENIDxcBVLwT888Eb/d25+4YUyei5anA0u2sXs0hXttxWy6RsD8FOOfZMMkQ9qXoXMo12cilu2x0JAWvalIAlILjrI0DWcXWkDshJpNx6DBge165aihWkuDIjnpEvQisp4nymXrVCbufHSUztvcyMW//xcAN7800uuLdSkb5iGw0Uh/BAeSOadaZI4pXZXwuh8YVPQoERQJfujoI6v1F4yhtURVYt/ogYQI5o6hURNApye2YNdccVDNEYjQbNYrlgh69/wS/BOuouVRQF45roLu+p8/6/k5zB7FWhc5sspgbrzRTKJR3LEOt4R6aOgZJXSlPqQYwVItuFS3/mChWVLEeBkvAiCVjJPPE50VMtgqE74cCC5OVwsYpCs8dO3PPr7F3SrW5WPRQHoqMuvrcumewKYFTVFdhKNcDIyqzq2Epi4LiwVLX/4CdZ+0TXWfPoF5mVqMI6rAnrzCmZiQd30Ed7ZJ2lWUKTmYxOXM8gSOCutAXdomr6f9En4USP6BrhgBd09hbq1VWRXNVffBcuKFSsylx/SfCuWt6XUPYWjBp3pQ3gwIo2SCbbjzjaadc2SZdZ52XWWP/gYyx91Eho9m/rgbdzmpiMF0rByYPlDj7OuK//Ysu3dNvXJZoFF2rrUL+7LuQQ0Vh/cWRydPe90UdZ79I8oqnt1Jn9XX1+fMxiNmvuoagHXHZrrwvCjGFi4FktwuQGYACN0A7oGi4DQXHhnEDruVPMLTRbOFI3WUI/3dHMbvAXxY25uaS+VyVrreZdI+IYVZ1tu2ZEWyeJEmMRj+mTVKYAWQcDJR6IQ3hMlpJhKcZkuI8Z43lGUZf6085+rAtCeK/R4qVQj5wERKQvTaRKaoUCQOJLcvfMRDAeDfXon84wR6YZmq//SaRCMpu8UwYBKQPymDstA8yEswSplixAzMMqVJCaw70wJVxGCIeUh3bikfARU0QR3rI7nZK5AsMF5Y3uupifpv/e9KgB1mVRb2k/BzSgsmEbP2YlJOREeTyHllHkDezA09fFmK48OmpgjQ2C6/qQzzcvXzwJARglAOp+3VDojxiulaQt2jyi0c15Ok1hN/QmnW/NvXGyZpjaA5WJIIrh4mXUJjCI/tDbMmwZLdZlsGzleqFQFwM9Yg09EGWEJQIwyJ3N/bONkmEHmx8wMF94DCD/8s6fwTJ93gtK/C4gHUYDVgSMJLJ68XAFApWVllYkxq0yNy79Dup1cJrS21Vda5+V/ZG2/+bvWjssjYKKCW7w6uTUBNEkX41JuqTLKkPFTQH7hUh2AKKqFp2EU/U2fou3e4QoQVK4AbXC5o4mygG9pdPztl21q6/tGHxcZMNx4yjnmZfGe5PVg1q+rh/AwYy9twcggXKAYzwpCcIm28y6zpjNWY+UILCxOWe6w4xRktapwQvDheMInhqigzuHLaMEuYS5u2edWFQDYYUYAgOgcXTdZMikb6k8809rWrLW6Y08BT1guaQWYJoJPD7/wmO7KFpFB5pYfiVXhy7IC8s2+fh02kYwxcJ2ZgR0yWwUzLI3NX/maNZ91EfBiRgth0K8yPmrBcH+87LI6thQSlNSEg16EZRn9ndvKZFC7b6kOQFTxXVCh+ERhnhtwUmi+dulh1vbVq6zx5LOt85LrZKr0e2yNZabTn7xn4796xVJZ5AFkEAxRqFQmA17dipAGAGoDzVLfNswFYwZt+nzr+ZdD+LnkiK6y+40XrDIx6vYD4sxZo2hQcvAq9wIPDMhSXhTOrb/sMq9UBSCFPJRxVDRBiHc9iyQBcRPRfEO4AM26GabaddUNlm3pxBI4LfRHXnoCWhuThilM/uCjsEyuxBi4Dmj6WCGoJbpQaWin/L5myTJrv3itgigF4swpJErj77xqIz97EoPSMWcxf9R8HAsSK5A/0CLZM8IJRZVStQEUYyExPXmIBdadxABPqfcTm/w1EhxomKyE8NPcIcdYz9rvWuGYU2EJyMv7d9jIxufgUFkJSmFazlpjXk0OJHxL1zejCqaNAFgeGUD+0IAk6g8tg3oGQWqWq0Spb6sNPHlXLDhUIYskYw4i9mNxsSmupBsQnEWkXKQJRMgATRVEmPTIl+PlhkzTz/t/8m828uLjAoh+zDqu+0t+53prO/8ygJOz0Veeg3/3ShAuTbllhyMvWEl2AUCjfHVmaBdA2G2d0HwesYJ+L/+lhSE36H/k3608Oe7kpPAxH241ocCIPZCV8rJOew26AZriTQOf9imLAOB2cWRSZoRPAkLfJVXiTc3Q34eff9j61v8QUbzfUjU4FWMfMN52weV20NqbEPlrbOinD8/lBRjb8pWLLAOgaAnsW9z+oTWdfj5WinMVJCUptMq8YuDZ9Ta9dYuWy9jonaQUx0ksQCQs+ZrHo9ppzVXKIgBQSJIEmvFg3Tmh6lDP6AxNeOmsTX24yXrv+L7tfvNFVKVh3rAQ+Hkd1v7l198ic576+D2AlsU47BeWHmr5I09AXwANOrVIgTuweYq4RKpA+Gytjb3xoo29usEtp+QEwjk+nGVK0/IIuqyz2LgDbs4tYoIL3hYFQOiBQWpDViC1O6J6BEkGSk7sIbIHMOH+h2+3nev/CdYw4GID8vpMY6t1IZHJtHQICPLFJKnptPMlJN2icPSXlRRpTmoe1lXs/dQGnrpH84t7uBdXH6bE3GNwHNJ1Ae24Qi+aP0WPFYXBi+jfLL0gLKwENFoGEV3niHHLS/zxiQkIi+IEmOBdMQKMj7+zESb7AVzgCms87TxNQXdJN7RwBIaTeKjdogIdaUIYV9AD/yjcwNP3as1nkKWl+AiMmeZ2y7QtsWxbNzZQXYo33GmOvvyMW42oLAkfk0MA8KnEKqU6ALAm8jVLjEKqCsJrbWYHFNbTjCGQ7ATvHvJoJix9D91uk2Cu4+JrtdtjgBQCIkUQQSN+1lz4oEkzl5j84FdWBo0mrBi5noMt27lMFuTn8loGOUxKgKtlmtpt7LWfIlssKgFSYCRfCuLoGLNKdvcu1QGg4ZAImSIQemJVymq6D5ZPhtOTMscK83v4sQSE5hQbaCgQcAyJyyTiQ/uab1rTqedKk44aKCZEKf3sC4DBkRaTrGXf+ku5CBnYA3SShhIq0xMWYPWYRLJVxjKqeEJLjNuVCeJ5Nkfg815lEQDQkxqKC1FlxM+2ddmS37vRfAQoCkxT5f6dz8zg3LZ1BuYIP0XuXkZcYDxgRpjO1VnDyWeB+VjzApjz4FKyAdY1JzZJoJ/S8S8AwV+IRKk8NmQBltNS76dW2rlVmWN5bBgCBm6F4ViCRRcDbfHmdnSJGPvcqwMAJmX+Uj99FjRhbmUsdZObXlPur+0uEhyvNt7SwvQ9nM9zFWAb84I9CrM/gIUOe1S7F6IQF8xZmRyzmcGdWB4/tuK2LVbc8THmHtIhS8RvluB2HjJCXob4MhtLCCp5hh0kCRy+jKpaqgOAr6ikGQ4lQaDLDQYnGnrmPhtFSiotMcNjkMLyxvV+9pn1YEwXmQR4+cOPt/wRx8e+KUON54iFxzwMpMHEiE0AZAkNrdOq0lhJuJpU8BzBspRKIwUPpyZgARgP+lISWQUNfZPEKVhocVVKdQDiATGYzqRYJ7PFcRMOLphwCBuaW2x+sVgQkrED7TzeAnOF40+zelzOoBOB50/i6mi2fm0d0uWLYEHQLNxKp0WoZ1CT28nd4H6wqFLfVht+br07hYLFRdyPz+YScSZAZVYp1QEQajGjhJaSzlcagfCgYRB2QnEloAa5FqCGER88M9lpRUZYwHZZmSNOfbRk8qRYJZ5DU2A8V4AtXNae0r6iFmkxl700TpPkVhyDOWT6yCLrjjkZq0On9a67VfsJzS9ewRktVhy6mRb6rA4AevOLCZ6sUCskHLMaC0xTo5+5wEMghBCiM8/kuUa3nP11azjlbBcjwExx+0c2/vYr2hKnmTJrmXJUtXQRBFhM4eiTsHfYbrse/hFAS8v0s50HKVus7TnEsh092DRhD0HXwhgCQ/cD3nqXIqQ0aN5Hh/+dC7hzd6dVEJKwNGvOSFnxwXxAsDhwonJJjDWfcaE1nr7aso0taMUffHXklQ02unGDdWGTlEZ9ccenOP2ZttrlRzgS+GJEVkaKmKMF539erh6Z5b8iGRrQNfXeLxDw0ubDGrId3VoqOWb8rZctxJLIoEe2qBjHJ/RPfhcpi1uANAS/Y1ChoLMguIlIV1ZAv0MeUDj2VGtZfQWOrA4SA4wBpV2fYRt7j02C+Z5r/wynQkeB2UkbfPJua0XfKCjbNL4LyOG7AZgEKcKvP1Om1wjrYeKz64F/dmcKDLTIanhuOP3RZptGfkGeuK3mikNLoFXRBR1vse9Tjiol7rFAKy0b1UIVBEhYFyHmPzWiD4MclsG2NddY5xXfsmxrJ2KQywtGXnzUtv3LX8js21ZfrlMe0hj6z4ds+tMtbm+AIDfw+DqdLSBn1fI207fNBp+9T/l+3TErrOub37FMa4cyPU0LhXCvwDMGLrtuBXBKUPYHvtlPz59jAdUBoPAgE4Ep7QlAkf6eXIwLdIEMzLnr6j+xhpXnQetADQCVsHZzZzjw2DoLsVo0nHiGtZzzDXAVwRLetCFEbQrEZZRfnjBRIihMWRk8C+jPfKPv3r9XSk2r6br620iHYVmI/M5SyCA0gZxDd4osYemmjg/2kysQjCplUQBmx2AiHTNrrSVRzIlGgsDjbqatmh8p8fB/PWI7fvw3MFGYJ/pn4Q4dv/0H8l0eZjKwMavjOAaxCtZxWsz42z+38U0bZcpMc1u/do0VP/vQeu+8FUtcr9Ug+HVd821sow9zKwx5AiP6QpUmLpUTizgwM6ag0kWnWUn2eagKADQNdYMYVwCaPyfgRHHhK4+8S4jsg9i1jWxYbzvv+oGNUJPQEoVjZKbwPPej5gYeu9Nm+rdrOeR+ggGyglMenSniefDp/0C6OyxgearE/QOB7L3jVp03ZNt7rBvWlsfReIRUW5ZAbWMsC+MRM0SqZ+70SoDMMa6ecx9VAUA2HjJnd4lFPAFQIKYusuIOOtyXj+JLkJGXnrQSNGZc35nDIzC2XniV5XAISvRGX34aWn7Z+S2Ay3YsheaxoZncLcDo08HObTbCkyOu31ghmDs04MyghDS4b93f2igOWP36Juu88npYUA/04fiRwDEI+nqNQKC4T3xdCVlUscBHdQCiEJlMLDgHAmmalwrzA7bBdFn8JBhB64wRTF0bV64yftlJIKY/eteGNzygNZ10fATNDL4s5XhumxMz5po/9vrzNrXlLVkJ40HLqkvhRsuQ/k7a0ON3WD+22GWcMtP6OJcKWJFiYgulgmaDNvsgu3Yd9/2sCgBGFBlAKKi7MBiaIa7UnCbAM/8JKGJFgCBU7pBjrXnVJXov7dqmg1Oe4nDlYNxIY6Xw8ZUYgyhPg92a7cCVqzyxzrkC5uchStOZXwUtzI1lcPyX/229P7rZgl1wJSoCAoo/3GkPZIMguzq8o6JSCeEvC5eqAJSCykQl8XlSIWVuOxkT8OLYpfx4Ujs6oD+12LzqG0pWAuzm+u//oZWH+hQTRARCMwC6HRwBGJ3jDEJyLZ+BcMzvncVFMnfn05iNZ4pYegka8xOylRQFxYQX3qEQykBZkj5736smQkOl4nA5rAvhzp7215wKm5MUNKw5QEmmRorUDk1N7ODLUUR75gaDj/xYQY/+zVaCRa0xALI/6cgF2MaXuPg4X2S8yHYutTy+ROE3TLNHZnLDpC/VwIuahlLIB9vjZiqqjJ9XjgbhUEJ773tVAD4cDPpWLgl341egTfiVpptHwpM6BNFEFAtvYp4awZToM/TEXdJkiECmL0cxhLpiPsET5Bqs5/whBQuXQRe5IQDoCGyARGsaevZ+G3nhUW1/lexwAIFmpMdcih0cw3oCEfMhEPDOX4gEQbB7S//wTnVZ4KOqC9z+3o6+mSj1UVo93BR7jo+nxU1RmwyRAYIAJrm08YiKS6iYJqOM2gAoGB1yQQ7uxBgwK5xocNnl5kukEFCxe4QgApx1TlQ3Vzxf4irUuECIXQO/YLUAMtz+Hn+xsXCpagEDAwMTQ8Xgmbba/AptbWXinB3MYCIFNDDAYytCoR8sqY8zQ/Imbik4pcELLRRbTCx1zPrgm599YAG+OpPpciz5RxdXMA4mo7ni1SUmOKd50tUA8IFBfOQlAPGQxjU4OfMMZXE09/1k1lC11Gf8XSe0119a66cKUJ4Y5UTSGDWrghoygndqgn96phkLBTZzFFogpLpiMzT57ms2gyTKtbFZ6MQkucxyBMVJCoXEu2jOq2dH1nE+lGRpzCCFnyiVd93z7rabXtuB7WSVsigAr/cOD597cHu0tFC7mgCwMEqnkhdWUCgJr0a8AhgCoYDEDnEBgxIWzGr5QjVdxBUQ55i4jxOUAGPTw36cIwFzdoyDCAw4EviiRfRjReCnMfbWwO7v3bThnSfQIe7kus7/TDiYX7fH84Obd2y++IjuniWF2hO1LMI/WRKGyPgehe+8BJLswTXPWgh5oYYdT8mu0gmNJgKIEkkgPqCf5iBdvJOO6tiLVY6eZCRQADGPwPXB6NTda+7/+S3oUjUH4PjPBQB9gqc+Gty4anlrR2s+eyJc3p28SFvUKsk43sSgewVbjhm9yvRjE0XF/MQnGU8KFEbnC+jjVvjY7PFO7c6CTqKcl0CAD0UAzJHFETh/MP3r4Ym7r/zJL/58Kgi4/DmkOWaBsj8ARCA0te6dbS+d0d0y0prPHFeoyRS0rJEBacOxS/qJdqR7MMX5ZeoUgG9wDWFGUPSOT9aRDnmdFRTjUA9IXH83SM9J3GCV+xGUZzloZiKo7Hy9d/Svf+vBjd+PhXfmin7VishWa9yrnmDVXnrs0i9de/yyK5bW16yq9VKH+L5fn8Z5ORlJGOM4EWYcIAjQikwbQjoNEzh2gs4FDHqjn5IZgYD+qFd7YvIkKjj4ie8nML4S8i8any5XPtmxu/j8ve9uf+D+zds3oSPN/nOFJ0XxyYf9LOzPpZNHum2XHd3dfXRHy5LWnNdSSKcLaS+qwU8L+f8X+PtCiI0DLFm+A8DDpgwnjRjKy/m69mkECO+s0RgILczwzoI+WBGRXSDCgmxQDPFzypnyxNDUzPD7Y9M7H9q0tRfdBnHxp2ruIAAP+1O+KADzadIiyDlpzL/Yh+/SMV/2KtXq9+o2+zq/P59ZeE8u4pZcbDtQDiBwAIEDCBxAYH8R+B8dphWx6ChQwQAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f%5B%5D=sentient@400&display=swap" rel="stylesheet">
+<!--
+  Standalone variant: no Python, no server. The page reads the Claude Code
+  transcripts straight from a folder you pick (~/.claude/projects) and builds
+  the dashboard in the tab. Nothing is uploaded.
+-->
+<style>
+/* Design tokens */
+:root {
+  --font-eyebrow: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-heading: 'Sentient', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:    'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --fs-11: 11px; --fs-12: 12px; --fs-13: 13px; --fs-14: 14px; --fs-16: 16px;
+  --fs-18: 18px; --fs-22: 22px; --fs-28: 28px; --fs-40: 40px;
+  --track-eyebrow: 0.14em; --track-cta: 0.10em; --track-display: -0.02em;
+  --ink: #0A0A0A; --blue: #126ED3; --red: #D3121D;
+  --n1: #FFFFFF; --n2: #F4F6F8; --n3: #D4D4D4; --n4: #D9D9D9;
+  --ink-66: rgba(10,10,10,0.66); --ink-45: rgba(10,10,10,0.45); --ink-12: rgba(10,10,10,0.12);
+  --blue-hover: #0E5AAE; --blue-hover: color-mix(in srgb, var(--blue) 82%, var(--ink));
+  --blue-tint: #E7F0FB; --blue-tint: color-mix(in srgb, var(--blue) 9%, var(--n1));
+  --blue-edge: #B9D3F1; --blue-edge: color-mix(in srgb, var(--blue) 30%, var(--n1));
+  --red-tint: #FCEBEC; --red-edge: #F0BDC0;
+  --text: var(--ink); --text-muted: var(--ink-66); --text-faint: var(--ink-45);
+  --bg: var(--n2); --surface: var(--n1); --border: var(--n3);
+  --r-btn: 8px; --r-card: 16px; --r-pill: 999px;
+  --shadow-sm: 0 1px 3px rgba(10,10,10,0.07); --shadow-md: 0 8px 30px rgba(10,10,10,0.09);
+
+  /* Chart series by model family - validated for colour-blind separation.
+     Sonnet keeps the accent blue. */
+  --fam-opus:   #EB6834;
+  --fam-sonnet: var(--blue);
+  --fam-haiku:  #1BAF7A;
+  --fam-fable:  #4A3AA7;
+  --fam-other:  #9A9A9A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--text); font-size: var(--fs-14); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+
+.masthead { background: var(--ink); color: var(--n1); width: 100%; padding: 20px 40px; display: flex; align-items: center; gap: 16px; }
+.masthead .logo { font-family: var(--font-heading); font-size: var(--fs-22); letter-spacing: var(--track-display); display: flex; align-items: center; gap: 10px; }
+.masthead .logo img { width: 30px; height: 30px; }
+.masthead .kicker { margin-left: auto; font-family: var(--font-eyebrow); font-size: var(--fs-11); text-transform: uppercase; letter-spacing: var(--track-eyebrow); background: rgba(255,255,255,0.10); padding: 5px 14px; border-radius: var(--r-pill); }
+
+main { max-width: 1200px; margin: 0 auto; padding: 32px 40px 48px; }
+h1 { font-family: var(--font-heading); font-weight: 400; font-size: var(--fs-40); letter-spacing: var(--track-display); line-height: 1.1; }
+.intro { color: var(--text-muted); margin: 8px 0 20px; max-width: 85%; }
+.eyebrow { font-family: var(--font-eyebrow); font-size: var(--fs-11); text-transform: uppercase; letter-spacing: var(--track-eyebrow); color: var(--text-muted); }
+
+.btn { font-family: var(--font-eyebrow); font-size: var(--fs-12); text-transform: uppercase; letter-spacing: var(--track-cta); border-radius: var(--r-btn); padding: 11px 18px; border: 1px solid var(--blue); background: var(--blue); color: var(--n1); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.btn:hover { background: var(--blue-hover); border-color: var(--blue-hover); }
+.btn.ghost { background: var(--surface); color: var(--blue); }
+.btn.ghost:hover { background: var(--blue-tint); }
+.btn.sm { padding: 6px 12px; font-size: var(--fs-11); }
+.btn:disabled { opacity: 0.5; cursor: progress; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0 14px; }
+.hint { color: var(--text-muted); font-size: var(--fs-13); max-width: 85%; }
+.hint + .hint { margin-top: 6px; }
+kbd { font-family: var(--font-mono); font-size: var(--fs-11); background: var(--n2); border: 1px solid var(--border); border-radius: 4px; padding: 0 5px; }
+.osrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 4px; }
+.osrow select { font: inherit; font-size: var(--fs-13); border: 1px solid var(--border); border-radius: var(--r-btn); padding: 5px 8px; background: var(--surface); color: var(--text); }
+.pathchip { background: var(--n2); border-radius: 5px; padding: 2px 8px; }
+#osSteps { margin-top: 12px; }
+#osSteps strong { color: var(--ink); }
+.progress { margin-top: 18px; }
+.progress .bar { height: 8px; background: var(--n2); border-radius: 4px; overflow: hidden; }
+.progress .bar i { display: block; height: 100%; width: 0; background: var(--blue); border-radius: 4px; transition: width .15s; }
+.progress .txt { color: var(--text-muted); font-size: var(--fs-12); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.err { background: var(--red-tint); border: 1px solid var(--red-edge); border-radius: 12px; padding: 10px 14px; margin-top: 14px; }
+
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; padding: 12px 0 20px; position: sticky; top: 0; background: var(--bg); z-index: 5; }
+.filters .spacer { margin-left: auto; display: flex; gap: 8px; }
+.seg { display: inline-flex; border: 1px solid var(--border); border-radius: var(--r-pill); background: var(--surface); padding: 3px; }
+.seg button { font: inherit; font-family: var(--font-eyebrow); font-size: var(--fs-11); text-transform: uppercase; letter-spacing: 0.08em; border: 0; background: none; color: var(--text-muted); padding: 5px 12px; border-radius: var(--r-pill); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--n1); }
+.check { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); cursor: pointer; }
+.check input { accent-color: var(--blue); }
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 22px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-card); box-shadow: var(--shadow-sm); padding: 16px 18px; }
+.kpi .v { font-family: var(--font-heading); font-size: var(--fs-28); letter-spacing: var(--track-display); line-height: 1.15; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.kpi .s { color: var(--text-faint); font-size: var(--fs-12); margin-top: 2px; }
+
+section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-card); box-shadow: var(--shadow-sm); padding: 24px 26px; margin-bottom: 22px; }
+section > h2 { font-family: var(--font-heading); font-weight: 400; font-size: var(--fs-22); letter-spacing: var(--track-display); display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+section > h2::before { content: ''; width: 5px; height: 22px; border-radius: 3px; background: var(--blue); flex-shrink: 0; }
+section > .desc { color: var(--text-muted); margin-bottom: 16px; max-width: 85%; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+@media screen and (max-width: 900px) { .grid2, .grid3 { grid-template-columns: 1fr; } main { padding: 24px 18px; } }
+h3.sub { font-family: var(--font-eyebrow); font-size: var(--fs-11); font-weight: 400; text-transform: uppercase; letter-spacing: var(--track-eyebrow); color: var(--text-muted); margin: 4px 0 10px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 16px; margin: 4px 0 10px; color: var(--text-muted); font-size: var(--fs-12); }
+.legend b { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+svg text { font-family: var(--font-body); font-size: 11px; fill: var(--text-faint); }
+.chart { width: 100%; display: block; }
+
+table.t { width: 100%; border-collapse: collapse; font-size: var(--fs-13); }
+table.t th { text-align: left; font-family: var(--font-eyebrow); font-size: var(--fs-11); text-transform: uppercase; letter-spacing: var(--track-eyebrow); font-weight: 400; color: var(--text-muted); border-bottom: 1px solid var(--border); padding: 6px 10px 6px 0; white-space: nowrap; }
+table.t td { padding: 7px 10px 7px 0; border-bottom: 1px solid var(--n2); vertical-align: middle; }
+table.t td.n, table.t th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.t td.wrap { max-width: 0; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dim { color: var(--text-faint); }
+.mono { font-family: var(--font-mono); font-size: var(--fs-12); }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: 0; }
+
+.bars .row { display: grid; grid-template-columns: minmax(0, 1fr) 70px; gap: 10px; align-items: center; padding: 4px 0; }
+.bars .lab { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bars .track { grid-column: 1 / 2; height: 6px; background: var(--n2); border-radius: 3px; margin-top: 3px; }
+.bars .fill { height: 6px; border-radius: 3px; background: var(--blue); }
+.bars .val { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-muted); }
+
+details { margin-top: 14px; }
+details summary { cursor: pointer; font-family: var(--font-eyebrow); font-size: var(--fs-11); text-transform: uppercase; letter-spacing: var(--track-eyebrow); color: var(--blue); }
+details .scroll { max-height: 320px; overflow: auto; margin-top: 10px; }
+
+.callout { background: var(--blue-tint); border: 1px solid var(--blue-edge); border-radius: 12px; padding: 12px 16px; color: var(--ink); margin-top: 16px; }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.stat { background: var(--n2); border-radius: 12px; padding: 12px 14px; }
+.stat .v { font-family: var(--font-heading); font-size: var(--fs-22); font-variant-numeric: tabular-nums; }
+.stat .s { color: var(--text-faint); font-size: var(--fs-12); }
+
+#tip { position: fixed; pointer-events: none; z-index: 20; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-md); border-radius: 10px; padding: 9px 12px; font-size: var(--fs-12); min-width: 150px; display: none; }
+#tip .h { font-weight: 600; margin-bottom: 4px; }
+#tip .r { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; }
+#tip .r span:first-child { color: var(--text-muted); }
+
+footer { color: var(--text-faint); font-size: var(--fs-12); margin-top: 8px; }
+footer p + p { margin-top: 4px; }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <span class="logo"><img src="data:image/png;base64,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" alt="">claude</span>
+  <span class="kicker">Claude usage</span>
+</header>
+<main>
+  <div class="eyebrow" id="generated">Standalone</div>
+  <h1>Claude usage dashboard</h1>
+  <p class="intro" id="intro">Claude Code usage (desktop Code tab and CLI), read in this tab from the transcripts in ~/.claude/projects. Nothing is uploaded. Costs are API-equivalent at public list prices, useful for comparing models, not what you are billed.</p>
+
+  <section id="loader">
+    <h2>Load your Claude Code data</h2>
+    <p class="desc">Pick your <span class="mono">~/.claude/projects</span> folder (picking <span class="mono">~/.claude</span> works too). The files are read locally by this page and never leave your machine.</p>
+    <div class="osrow">
+      <label class="eyebrow" for="os">Your system</label>
+      <select id="os"><option value="mac">macOS</option><option value="win">Windows</option><option value="linux">Linux</option></select>
+      <span class="dim">Claude folder</span> <span class="mono pathchip" id="osPath"></span>
+      <button class="btn ghost sm" id="copyPath">Copy path</button>
+    </div>
+    <p class="hint" id="osSteps"></p>
+    <div class="actions">
+      <button class="btn" id="reload" hidden>Reload last folder</button>
+      <button class="btn" id="openDefault">Open folder</button>
+      <input type="file" id="dirInput" webkitdirectory multiple hidden>
+    </div>
+    <p class="hint" id="pickerNote"></p>
+    <div class="progress" id="progress" hidden><div class="bar"><i id="progBar"></i></div><div class="txt" id="progText"></div></div>
+    <div class="err" id="err" hidden></div>
+  </section>
+
+  <div id="dash" hidden>
+    <div class="filters">
+      <div class="seg" id="range" role="group" aria-label="Time range">
+        <button data-v="7">7 days</button><button data-v="30" aria-pressed="true">30 days</button><button data-v="90">90 days</button><button data-v="0">All</button>
+      </div>
+      <div class="seg" id="metric" role="group" aria-label="Metric">
+        <button data-v="cost" aria-pressed="true">API-equiv $</button><button data-v="tokens">Tokens</button><button data-v="calls">Calls</button>
+      </div>
+      <label class="check"><input type="checkbox" id="side" checked> Include subagents</label>
+      <label class="check" title="Replace project paths and session titles, for screen sharing"><input type="checkbox" id="anon"> Hide names</label>
+      <div class="spacer">
+        <button class="btn ghost sm" id="reload2" hidden>Reload</button>
+        <button class="btn ghost sm" id="change">Load another folder</button>
+      </div>
+    </div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <section>
+      <h2>Daily usage</h2>
+      <p class="desc">Stacked by model family. Hover a day for the breakdown.</p>
+      <div class="legend" id="famLegend"></div>
+      <svg class="chart" id="daily" height="260" role="img" aria-label="Daily usage by model family"></svg>
+      <details><summary>Show as table</summary><div class="scroll" id="dailyTable"></div></details>
+    </section>
+
+    <section>
+      <h2>Model mix</h2>
+      <p class="desc">Where the spend goes, and how the main session compares with subagents.</p>
+      <div class="grid2">
+        <div><h3 class="sub">By model</h3><div id="modelTable"></div></div>
+        <div><h3 class="sub">Main session vs subagents</h3><svg class="chart" id="sideChart" height="150" role="img" aria-label="Main versus subagent usage by family"></svg><div id="policy" class="callout"></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects and sessions</h2>
+      <p class="desc">A project is the working directory a session ran in. Subagent usage rolls up into its parent session.</p>
+      <div class="grid2">
+        <div><h3 class="sub">Top projects</h3><div id="projTable"></div></div>
+        <div><h3 class="sub">Top sessions</h3><div id="sessTable"></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tools, connectors, and skills</h2>
+      <p class="desc">Tool calls the model made, MCP connectors grouped by server, and skills invoked by you (slash command) or by the model.</p>
+      <div class="grid3">
+        <div><h3 class="sub">Built-in tools</h3><div class="bars" id="toolBars"></div></div>
+        <div><h3 class="sub">MCP connectors</h3><div class="bars" id="mcpBars"></div></div>
+        <div><h3 class="sub">Skills</h3><div class="bars" id="skillBars"></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Activity and cache</h2>
+      <p class="desc">When you work with Claude (local time, API calls per hour), and how much prompt caching is doing for you.</p>
+      <div class="grid2">
+        <div><h3 class="sub">Hour by weekday</h3><svg class="chart" id="heat" height="210" role="img" aria-label="Activity heatmap by hour and weekday"></svg></div>
+        <div><h3 class="sub">Prompt cache</h3><div class="stats" id="cacheStats"></div></div>
+      </div>
+    </section>
+  </div>
+
+  <footer id="foot"></footer>
+</main>
+<div id="tip"></div>
+
+<script>
+// PARSER-START - DOM-free. Also loadable in Node for testing.
+const PRICING = {
+  source: 'Anthropic first-party API list prices, USD per million tokens, from the Claude API reference cached 2026-09-25.',
+  fast_multiplier: 2.0,
+  web_search_per_request: 0.01,
+  models: {
+    'claude-fable-5-1':  { input: 10.0, output: 50.0, cache_read: 0.25 },
+    'claude-fable-5':    { input: 10.0, output: 50.0, cache_read: 1.00 },
+    'claude-opus-5-5':   { input: 4.0,  output: 20.0, cache_read: 0.20 },
+    'claude-opus-5':     { input: 5.0,  output: 25.0, cache_read: 0.50 },
+    'claude-opus-4-8':   { input: 5.0,  output: 25.0, cache_read: 0.50 },
+    'claude-opus-4-7':   { input: 5.0,  output: 25.0, cache_read: 0.50 },
+    'claude-opus-4-6':   { input: 5.0,  output: 25.0, cache_read: 0.50 },
+    'claude-sonnet-5-5': { input: 2.0,  output: 10.0, cache_read: 0.20 },
+    'claude-sonnet-5':   { input: 2.0,  output: 10.0, cache_read: 0.20 },
+    'claude-sonnet-4-6': { input: 3.0,  output: 15.0, cache_read: 0.30 },
+    'claude-haiku-4-5':  { input: 1.0,  output: 5.0,  cache_read: 0.10 },
+  },
+};
+const BUILTIN_COMMANDS = new Set(['add-dir', 'agents', 'bug', 'clear', 'compact', 'config', 'context', 'cost', 'doctor', 'exit',
+  'export', 'fast', 'help', 'hooks', 'ide', 'init', 'login', 'logout', 'mcp', 'memory', 'model', 'output-style', 'permissions',
+  'plugin', 'pr-comments', 'release-notes', 'resume', 'rewind', 'status', 'statusline', 'terminal-setup', 'theme', 'usage', 'vim']);
+const MCP_HINTS = [
+  ['soqlQuery', 'Salesforce'], ['getRelatedRecords', 'Salesforce'], ['search_threads', 'Gmail'], ['create_draft', 'Gmail'],
+  ['list_events', 'Google Calendar'], ['suggest_time', 'Google Calendar'], ['search_files', 'Google Drive'], ['read_file_content', 'Google Drive'],
+  ['slack_', 'Slack'], ['getJiraIssue', 'Atlassian'], ['getConfluencePage', 'Atlassian'],
+  ['employee_search', 'Glean'], ['read_document', 'Glean'], ['gmail_search', 'Glean'],
+  ['lucid_', 'Lucid'], ['showpad_', 'Showpad'], ['expense___', 'Navan'], ['Run-Query', 'Mixpanel'], ['Get-Business-Context', 'Mixpanel'],
+  ['get_transcript', 'Sales Platform'], ['get_pipeline_risk', 'Sales Platform'], ['get_meeting_assets', 'Meetings'], ['recordings_list', 'Meetings'],
+];
+const READABLE_MCP = {
+  Claude_Browser: 'Built-in browser', 'claude-in-chrome': 'Claude in Chrome', visualize: 'Visualize', terminal: 'Terminal',
+  'scheduled-tasks': 'Scheduled tasks', 'mcp-registry': 'MCP registry', Claude_Code_iOS_Simulator: 'iOS Simulator',
+};
+const CMD_RE = /<command-name>\/?([^<\s]+)<\/command-name>/g;
+
+function family(model) {
+  for (const f of ['fable', 'mythos', 'opus', 'sonnet', 'haiku'])
+    if (model.includes(f)) return f === 'fable' || f === 'mythos' ? 'Fable' : f[0].toUpperCase() + f.slice(1);
+  return 'Other';
+}
+function priceFor(model) {
+  const base = model.replace(/-\d{8}$/, '');
+  let best = null;
+  for (const key of Object.keys(PRICING.models))
+    if ((base === key || base.startsWith(key + '-')) && (!best || key.length > best.length)) best = key;
+  return best ? PRICING.models[best] : null;
+}
+function costOf(r) {
+  const p = priceFor(r.model);
+  if (!p) return 0;
+  const m = 1e-6 * (r.speed === 'fast' ? PRICING.fast_multiplier : 1);
+  return (r.in * p.input + r.out * p.output + r.cr * p.cache_read + r.c5 * p.input * 1.25 + r.c1 * p.input * 2) * m
+    + r.ws * PRICING.web_search_per_request;
+}
+function savingsOf(r) {
+  const p = priceFor(r.model);
+  if (!p) return 0;
+  return r.cr * (p.input - p.cache_read) * 1e-6 * (r.speed === 'fast' ? PRICING.fast_multiplier : 1);
+}
+function projectLabel(cwd) {
+  if (!cwd) return '(unknown)';
+  return cwd.replace(/^\/(Users|home)\/[^/]+(?=\/|$)/, '~');
+}
+const newAcc = () => ({ calls: new Map(), sessions: new Map(), skills: new Map() });
+
+function scanText(text, acc) {
+  for (const line of text.split('\n')) {
+    // Cheap substring gates before JSON.parse - most lines are large tool results we don't need.
+    if (!line || !(line.includes('"assistant"') || line.includes('"custom-title"') || line.includes('<command-name>'))) continue;
+    let ev;
+    try { ev = JSON.parse(line); } catch { continue; }
+    const kind = ev.type, sid = ev.sessionId;
+    if (kind === 'custom-title' && sid) {
+      acc.sessions.set(sid, { ...(acc.sessions.get(sid) || {}), title: ev.customTitle || '' });
+      continue;
+    }
+    if (kind === 'user' && sid && !ev.isSidechain) {
+      const content = ev.message && ev.message.content;
+      if (typeof content === 'string')
+        for (const m of content.matchAll(CMD_RE)) {
+          if (BUILTIN_COMMANDS.has(m[1])) continue;
+          acc.skills.set(sid + ':' + ev.uuid + ':' + m[1], { t: ev.timestamp, s: sid, skill: m[1], via: 'slash' });
+        }
+      continue;
+    }
+    if (kind !== 'assistant') continue;
+    const msg = ev.message || {}, usage = msg.usage, model = msg.model || '';
+    if (!usage || !model || model.startsWith('<')) continue;
+    const key = msg.id ? msg.id + ':' + ev.requestId : ev.uuid;
+    const stu = usage.server_tool_use || {}, cc = usage.cache_creation || {};
+    const c1 = cc.ephemeral_1h_input_tokens || 0;
+    const c5 = cc.ephemeral_5m_input_tokens != null ? cc.ephemeral_5m_input_tokens : Math.max((usage.cache_creation_input_tokens || 0) - c1, 0);
+    let rec = acc.calls.get(key);
+    if (!rec) {
+      rec = { t: ev.timestamp, s: sid, cwd: ev.cwd, model, side: !!ev.isSidechain, ent: ev.entrypoint || 'unknown',
+        speed: usage.speed || 'standard', in: 0, out: 0, cr: 0, c5: 0, c1: 0, ws: 0, tools: [] };
+      acc.calls.set(key, rec);
+    } else if (sid && rec.s && sid !== rec.s) {
+      // Forked sessions copy their parent's history: count the call once, tie-broken
+      // by session id so the result does not depend on file order.
+      if (sid < rec.s) { rec.s = sid; rec.cwd = ev.cwd; }
+      continue;
+    }
+    // Each content block is logged as its own line with the same usage; take the max, union the tool calls.
+    rec.in = Math.max(rec.in, usage.input_tokens || 0);
+    rec.out = Math.max(rec.out, usage.output_tokens || 0);
+    rec.cr = Math.max(rec.cr, usage.cache_read_input_tokens || 0);
+    rec.c5 = Math.max(rec.c5, c5);
+    rec.c1 = Math.max(rec.c1, c1);
+    rec.ws = Math.max(rec.ws, stu.web_search_requests || 0);
+    for (const b of msg.content || []) {
+      if (!b || b.type !== 'tool_use') continue;
+      const name = b.name || '?';
+      rec.tools.push(name);
+      if (name === 'Skill' && b.input && b.input.skill)
+        acc.skills.set(key + ':' + b.id, { t: ev.timestamp, s: sid, skill: b.input.skill, via: 'model' });
+    }
+    if (sid && !acc.sessions.has(sid)) acc.sessions.set(sid, {});
+  }
+}
+
+function mcpLabels(calls) {
+  const byServer = new Map();
+  for (const rec of calls.values()) for (const name of rec.tools) {
+    if (!name.startsWith('mcp__')) continue;
+    const rest = name.slice(5), cut = rest.indexOf('__');
+    if (cut < 0) continue;
+    const server = rest.slice(0, cut);
+    if (!byServer.has(server)) byServer.set(server, new Set());
+    byServer.get(server).add(rest.slice(cut + 2));
+  }
+  const labels = {};
+  for (const [server, tools] of byServer) {
+    let label = READABLE_MCP[server];
+    if (!label && server.startsWith('ccd_')) label = 'Desktop app (' + server.slice(4) + ')';
+    if (!label) { const joined = [...tools].sort().join(' '); const hit = MCP_HINTS.find(([h]) => joined.includes(h)); label = hit && hit[1]; }
+    labels[server] = label || 'MCP ' + server.slice(0, 8);
+  }
+  return labels;
+}
+
+function buildPayload(acc) {
+  const mcp = mcpLabels(acc.calls);
+  const idx = { model: new Map(), project: new Map(), session: new Map(), tool: new Map(), ent: new Map(), skill: new Map() };
+  const ix = (t, v) => { const m = idx[t]; if (!m.has(v)) m.set(v, m.size); return m.get(v); };
+  const toolLabel = name => {
+    if (name.startsWith('mcp__')) { const rest = name.slice(5), cut = rest.indexOf('__'); if (cut >= 0) { const s = rest.slice(0, cut); return 'MCP: ' + (mcp[s] || s); } }
+    return name;
+  };
+  const sessionProject = new Map();
+  const recs = [...acc.calls.values()].map(r => ({ r, t: Math.floor(Date.parse(r.t) / 1000) })).filter(x => isFinite(x.t)).sort((a, b) => a.t - b.t);
+  const rows = recs.map(({ r, t }) => {
+    const proj = projectLabel(r.cwd);
+    if (r.s && !r.side && !sessionProject.has(r.s)) sessionProject.set(r.s, proj);
+    return [t, ix('session', r.s || '?'), ix('project', proj), ix('model', r.model), r.side ? 1 : 0, r.in, r.out, r.cr, r.c5, r.c1,
+      costOf(r), savingsOf(r), ix('ent', r.ent), r.tools.map(n => ix('tool', toolLabel(n)))];
+  });
+  const skillEvents = [];
+  for (const ev of acc.skills.values()) {
+    const t = Math.floor(Date.parse(ev.t) / 1000);
+    if (isFinite(t) && idx.session.has(ev.s) && !BUILTIN_COMMANDS.has(ev.skill)) skillEvents.push([t, idx.session.get(ev.s), ix('skill', ev.skill), ev.via]);
+  }
+  const ordered = t => [...idx[t].keys()];
+  const models = ordered('model');
+  return {
+    generated: new Date().toISOString(),
+    pricingSource: PRICING.source,
+    models, families: models.map(family),
+    projects: ordered('project'),
+    sessions: ordered('session').map(sid => [(acc.sessions.get(sid) || {}).title || '', sessionProject.get(sid) || '']),
+    tools: ordered('tool'), entrypoints: ordered('ent'), skills: ordered('skill'),
+    cols: ['t', 's', 'p', 'm', 'side', 'in', 'out', 'cr', 'c5', 'c1', 'cost', 'save', 'ent', 'tools'],
+    calls: rows, skillEvents,
+  };
+}
+if (typeof module !== 'undefined') module.exports = { newAcc, scanText, buildPayload };
+// PARSER-END
+</script>
+
+<script>
+(() => {
+if (typeof document === 'undefined') return;
+
+// ---- folder loading ------------------------------------------------------
+const $ = id => document.getElementById(id);
+const hasPicker = 'showDirectoryPicker' in window;
+const IDB = { db: null };
+function idb() {
+  if (IDB.db) return Promise.resolve(IDB.db);
+  return new Promise((res, rej) => {
+    const r = indexedDB.open('claude-usage-dashboard', 1);
+    r.onupgradeneeded = () => r.result.createObjectStore('kv');
+    r.onsuccess = () => res(IDB.db = r.result);
+    r.onerror = () => rej(r.error);
+  });
+}
+async function idbGet(k) { const db = await idb(); return new Promise(res => { const q = db.transaction('kv').objectStore('kv').get(k); q.onsuccess = () => res(q.result); q.onerror = () => res(null); }); }
+async function idbSet(k, v) { const db = await idb(); return new Promise(res => { const tx = db.transaction('kv', 'readwrite'); tx.objectStore('kv').put(v, k); tx.oncomplete = res; tx.onerror = res; }); }
+
+let lastHandle = null;
+
+async function filesFromHandle(root) {
+  // Picking ~/.claude is fine: only its projects/ subfolder is walked.
+  if (root.name !== 'projects') { try { root = await root.getDirectoryHandle('projects'); } catch { /* use as picked */ } }
+  const out = [];
+  async function walk(dir) {
+    for await (const entry of dir.values()) {
+      if (entry.kind === 'directory') await walk(entry);
+      else if (entry.name.endsWith('.jsonl')) out.push(entry);
+    }
+  }
+  await walk(root);
+  return Promise.all(out.map(h => h.getFile()));
+}
+function filesFromInput(list) {
+  let files = [...list].filter(f => f.name.endsWith('.jsonl'));
+  const inProjects = files.filter(f => /(^|\/)projects\//.test(f.webkitRelativePath));
+  if (inProjects.length) files = inProjects;
+  return files;
+}
+
+async function load(files) {
+  $('err').hidden = true;
+  if (!files.length) return fail('No .jsonl transcripts found in that folder. Pick ~/.claude/projects.');
+  const total = files.reduce((a, f) => a + f.size, 0);
+  let done = 0, bytes = 0;
+  $('progress').hidden = false;
+  setBusy(true);
+  const acc = newAcc();
+  const t0 = performance.now();
+  const queue = files.slice();
+  const tick = () => {
+    $('progBar').style.width = (bytes / total * 100).toFixed(1) + '%';
+    $('progText').textContent = 'Reading ' + done + ' / ' + files.length + ' files · ' + (bytes / 1e6).toFixed(0) + ' / ' + (total / 1e6).toFixed(0) + ' MB';
+  };
+  async function worker() {
+    while (queue.length) {
+      const f = queue.shift();
+      try { scanText(await f.text(), acc); } catch (e) { console.warn('skipped', f.name, e); }
+      done++; bytes += f.size; tick();
+    }
+  }
+  try {
+    await Promise.all([worker(), worker(), worker(), worker()]);
+    const payload = buildPayload(acc);
+    $('progText').textContent = payload.calls.length.toLocaleString('en-US') + ' API calls from ' + files.length + ' files in ' + ((performance.now() - t0) / 1000).toFixed(1) + 's';
+    show(payload);
+  } catch (e) {
+    fail('Could not read the folder: ' + e.message);
+  } finally { setBusy(false); }
+}
+function fail(msg) { $('err').textContent = msg; $('err').hidden = false; setBusy(false); }
+function setBusy(b) { for (const id of ['openDefault', 'reload', 'reload2', 'change']) $(id).disabled = b; }
+
+async function pickFolder() {
+  try {
+    const h = await window.showDirectoryPicker({ id: 'claude-projects', mode: 'read' });
+    lastHandle = h;
+    await idbSet('handle', h);
+    await load(await filesFromHandle(h));
+  } catch (e) { if (e.name !== 'AbortError') fail(e.message + ' - if the browser refuses this folder, pick the folder above it (~/.claude) instead.'); }
+}
+async function reloadFolder() {
+  const h = lastHandle || await idbGet('handle');
+  if (!h) return pickFolder();
+  try {
+    if ((await h.queryPermission({ mode: 'read' })) !== 'granted' && (await h.requestPermission({ mode: 'read' })) !== 'granted') return;
+    lastHandle = h;
+    await load(await filesFromHandle(h));
+  } catch (e) { fail(e.message); }
+}
+
+// ---- OS-specific default path --------------------------------------------
+// Browsers cannot open a folder dialog at an arbitrary path, so "Open folder"
+// copies the OS default path and opens the dialog; the user pastes it with the
+// dialog's go-to-path shortcut.
+const OS = {
+  mac:   { path: '~/.claude/projects', keys: [['⌘', '⇧', 'G'], ['⌘', 'V'], ['Return']], confirm: 'Select',
+           extra: ' To browse instead, <kbd>⌘</kbd><kbd>⇧</kbd><kbd>.</kbd> shows hidden folders.' },
+  win:   { path: '%USERPROFILE%\\.claude\\projects', keys: [['Alt', 'D'], ['Ctrl', 'V'], ['Enter']], confirm: 'Select Folder', extra: '' },
+  linux: { path: '~/.claude/projects', keys: [['Ctrl', 'L'], ['Ctrl', 'V'], ['Enter']], confirm: 'Select', extra: '' },
+};
+function detectOS() {
+  const ua = ((navigator.userAgentData && navigator.userAgentData.platform) || '') + ' ' + (navigator.platform || '') + ' ' + navigator.userAgent;
+  if (/mac/i.test(ua)) return 'mac';
+  if (/win/i.test(ua)) return 'win';
+  if (/linux|x11|cros/i.test(ua)) return 'linux';
+  return 'mac';
+}
+const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch { /* file:// in some browsers */ } } };
+let osKey = OS[store.get('cud-os')] ? store.get('cud-os') : detectOS();
+const keysHTML = ks => ks.map(k => k.map(x => '<kbd>' + x + '</kbd>').join('')).join(', then ');
+function showOS(copied) {
+  const o = OS[osKey];
+  $('os').value = osKey;
+  $('osPath').textContent = o.path;
+  const lead = copied === true ? '<strong>Path copied.</strong> ' : copied === false ? '<strong>Could not copy - type the path instead.</strong> ' : '';
+  $('osSteps').innerHTML = lead + '"Open folder" copies the path and opens the dialog. There, press ' + keysHTML(o.keys) +
+    ', then click <strong>' + o.confirm + '</strong>.' + o.extra;
+}
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); return true; } catch { /* fall back below */ }
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch { /* ignore */ }
+  ta.remove();
+  return ok;
+}
+$('os').addEventListener('change', e => { osKey = e.target.value; store.set('cud-os', osKey); showOS(); });
+$('copyPath').addEventListener('click', async () => showOS(await copyText(OS[osKey].path)));
+$('openDefault').addEventListener('click', async () => {
+  showOS(await copyText(OS[osKey].path));
+  if (hasPicker) pickFolder(); else $('dirInput').click();
+});
+showOS();
+
+if (hasPicker) {
+  $('pickerNote').textContent = 'Your browser can remember the folder: next time, "Reload last folder" re-reads it after one permission click.';
+  idbGet('handle').then(h => { if (h) { lastHandle = h; $('reload').hidden = false; $('reload').textContent = 'Reload ' + h.name; $('reload2').hidden = false; } }).catch(() => {});
+} else {
+  $('pickerNote').textContent = 'This browser asks for the folder each time (Chrome and Edge can remember it). The "upload" wording is the browser\'s - files are read locally, nothing is sent anywhere.';
+}
+$('reload').addEventListener('click', reloadFolder);
+$('reload2').addEventListener('click', reloadFolder);
+$('change').addEventListener('click', () => {
+  if (hasPicker) pickFolder();
+  else { $('loader').hidden = false; $('dirInput').click(); }
+});
+$('dirInput').addEventListener('change', e => { if (e.target.files.length) load(filesFromInput(e.target.files)); e.target.value = ''; });
+
+// ---- dashboard -----------------------------------------------------------
+let D, C, famOf;
+const FAMS = ['Opus', 'Sonnet', 'Haiku', 'Fable', 'Other'];
+const css = getComputedStyle(document.documentElement);
+const FCOL = Object.fromEntries(FAMS.map(f => [f, css.getPropertyValue('--fam-' + f.toLowerCase()).trim()]));
+const NS = 'http://www.w3.org/2000/svg';
+const DAY = 86400;
+const WD = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const state = { range: 30, metric: 'cost', side: true, anon: false };
+
+function show(payload) {
+  D = payload;
+  C = Object.fromEntries(D.cols.map((c, i) => [c, i]));
+  famOf = D.families;
+  $('loader').hidden = true;
+  $('dash').hidden = false;
+  $('reload2').hidden = !hasPicker || !lastHandle;
+  const allT = D.calls.map(r => r[C.t]);
+  const firstDay = allT.length ? dayKey(Math.min(...allT)) : '-';
+  $('generated').textContent = 'Standalone · loaded ' + new Date(D.generated).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
+  $('intro').textContent = 'Claude Code usage (desktop Code tab and CLI) read in this tab from ~/.claude/projects since ' + firstDay +
+    '. Nothing is uploaded. Costs are API-equivalent at public list prices, useful for comparing models, not what you are billed. claude.ai chat and other surfaces are not stored locally and are not included.';
+  $('famLegend').innerHTML = FAMS.filter(f => famOf.includes(f)).map(f => '<span><b style="background:' + FCOL[f] + '"></b>' + f + '</span>').join('');
+  $('foot').innerHTML = '<p>Sources: session and subagent transcripts under ~/.claude/projects, deduplicated per API response. This version keeps no history: transcripts Claude Code has already cleaned up are gone.</p><p>' + esc(D.pricingSource) + '</p>';
+  render();
+}
+
+// ---- formatting ----------------------------------------------------------
+const fmtN = n => n >= 1e9 ? (n / 1e9).toFixed(2) + 'B' : n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : n >= 1e3 ? (n / 1e3).toFixed(1) + 'k' : String(Math.round(n));
+const fmtUSD = n => n >= 1000 ? '$' + Math.round(n).toLocaleString('en-US') : n >= 10 ? '$' + n.toFixed(0) : '$' + n.toFixed(2);
+const fmtPct = n => (isFinite(n) ? (n * 100).toFixed(0) : '0') + '%';
+const fmtM = (v, m = state.metric) => m === 'cost' ? fmtUSD(v) : fmtN(v);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const dayKey = t => { const d = new Date(t * 1000); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+const dayLabel = k => new Date(k + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+const tokens = r => r[C.in] + r[C.out] + r[C.cr] + r[C.c5] + r[C.c1];
+const metricOf = r => state.metric === 'cost' ? r[C.cost] : state.metric === 'tokens' ? tokens(r) : 1;
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const shortPath = p => (p || '').replace(/^~\/Downloads\/projects$/, 'projects').replace(/^~\/Downloads\/projects\//, 'projects/').replace(/^~\/Downloads\//, '');
+const projName = p => state.anon ? 'Project ' + (p + 1) : shortPath(D.projects[p]);
+const projFull = p => state.anon ? 'Project ' + (p + 1) : D.projects[p];
+function sessName(s) {
+  const [title, proj] = D.sessions[s] || ['', ''];
+  if (state.anon) { const p = D.projects.indexOf(proj); return 'Session in ' + (p >= 0 ? 'Project ' + (p + 1) : 'unknown project'); }
+  return title || shortPath(proj) || '(untitled)';
+}
+
+// ---- tooltip -------------------------------------------------------------
+const tip = $('tip');
+function showTip(ev, title, rows) {
+  tip.innerHTML = '<div class="h">' + esc(title) + '</div>' + rows.map(([k, v, col]) =>
+    '<div class="r"><span>' + (col ? '<i class="dot" style="background:' + col + '"></i>' : '') + esc(k) + '</span><span>' + esc(v) + '</span></div>').join('');
+  tip.style.display = 'block';
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = ev.clientX + 14, y = ev.clientY + 14;
+  if (x + w > innerWidth - 8) x = ev.clientX - w - 14;
+  if (y + h > innerHeight - 8) y = ev.clientY - h - 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+const hideTip = () => { tip.style.display = 'none'; };
+
+// ---- filtering -----------------------------------------------------------
+function filtered() {
+  const now = Date.now() / 1000;
+  const start = state.range ? now - state.range * DAY : 0;
+  return { rows: D.calls.filter(r => r[C.t] >= start && (state.side || !r[C.side])), start };
+}
+
+// ---- KPIs ----------------------------------------------------------------
+function kpis(rows) {
+  let cost = 0, tok = 0, out = 0, light = 0;
+  const sess = new Set(), days = new Set();
+  for (const r of rows) {
+    cost += r[C.cost]; tok += tokens(r); out += r[C.out];
+    sess.add(r[C.s]); days.add(dayKey(r[C.t]));
+    const f = famOf[r[C.m]]; if (f === 'Sonnet' || f === 'Haiku') light++;
+  }
+  const items = [
+    ['API-equivalent cost', fmtUSD(cost), 'at public list prices'],
+    ['Tokens processed', fmtN(tok), fmtN(out) + ' output'],
+    ['API calls', rows.length.toLocaleString('en-US'), fmtN(rows.length / Math.max(days.size, 1)) + ' per active day'],
+    ['Sessions', sess.size.toLocaleString('en-US'), fmtUSD(cost / Math.max(sess.size, 1)) + ' per session'],
+    ['Active days', days.size, state.range ? 'of last ' + state.range : 'since first log'],
+    ['Sonnet + Haiku', fmtPct(light / Math.max(rows.length, 1)), 'share of API calls'],
+  ];
+  $('kpis').innerHTML = items.map(([k, v, s]) =>
+    '<div class="kpi"><div class="eyebrow">' + k + '</div><div class="v">' + v + '</div><div class="s">' + s + '</div></div>').join('');
+}
+
+// ---- daily stacked bars --------------------------------------------------
+function daily(rows, start) {
+  const svg = $('daily');
+  svg.innerHTML = '';
+  const W = svg.clientWidth || 1100, H = 260, m = { l: 52, r: 8, t: 10, b: 26 };
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  const first = rows.length ? Math.min(...rows.map(r => r[C.t])) : Date.now() / 1000;
+  const from = state.range ? start : first;
+  const keys = [];
+  for (let t = from; t <= Date.now() / 1000 + 1; t += DAY) { const k = dayKey(t); if (keys[keys.length - 1] !== k) keys.push(k); }
+  const today = dayKey(Date.now() / 1000); if (keys[keys.length - 1] !== today) keys.push(today);
+  const agg = Object.fromEntries(keys.map(k => [k, Object.fromEntries(FAMS.map(f => [f, 0]))]));
+  for (const r of rows) { const k = dayKey(r[C.t]); if (agg[k]) agg[k][famOf[r[C.m]]] += metricOf(r); }
+  const totals = keys.map(k => FAMS.reduce((a, f) => a + agg[k][f], 0));
+  const max = niceMax(Math.max(...totals, 0));
+  const pw = W - m.l - m.r, ph = H - m.t - m.b, bw = pw / keys.length;
+  const y = v => m.t + ph - (v / max) * ph;
+  for (let i = 0; i <= 4; i++) {
+    const v = max * i / 4, yy = y(v);
+    el('line', { x1: m.l, x2: W - m.r, y1: yy, y2: yy, stroke: i ? 'var(--n2)' : 'var(--n3)' }, svg);
+    el('text', { x: m.l - 8, y: yy + 4, 'text-anchor': 'end' }, svg).textContent = fmtM(v);
+  }
+  const every = Math.ceil(keys.length / Math.max(Math.floor(pw / 64), 1));
+  keys.forEach((k, i) => {
+    const x = m.l + i * bw, w = Math.max(bw - 2, 1);
+    let acc = 0;
+    const present = FAMS.filter(f => agg[k][f] > 0);
+    present.forEach((f, j) => {
+      const v = agg[k][f], y0 = y(acc), y1 = y(acc + v);
+      const h = Math.max(y0 - y1, 0.5), gap = j > 0 ? 2 : 0;
+      if (j === present.length - 1 && w > 6 && h > 4) el('path', { d: roundTop(x + 1, y1, w, Math.max(h - gap, 0.5), Math.min(4, w / 2)), fill: FCOL[f] }, svg);
+      else el('rect', { x: x + 1, y: y1, width: w, height: Math.max(h - gap, 0.5), fill: FCOL[f] }, svg);
+      acc += v;
+    });
+    if (i % every === 0) el('text', { x: x + bw / 2, y: H - 8, 'text-anchor': 'middle' }, svg).textContent = dayLabel(k);
+    const hit = el('rect', { x, y: m.t, width: bw, height: ph, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', ev => showTip(ev, new Date(k + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }),
+      [...FAMS.filter(f => agg[k][f] > 0).reverse().map(f => [f, fmtM(agg[k][f]), FCOL[f]]), ['Total', fmtM(totals[i])]]));
+    hit.addEventListener('mouseleave', hideTip);
+  });
+  const used = FAMS.filter(f => keys.some(k => agg[k][f] > 0));
+  $('dailyTable').innerHTML = '<table class="t"><thead><tr><th>Day</th>' + used.map(f => '<th class="n">' + f + '</th>').join('') +
+    '<th class="n">Total</th></tr></thead><tbody>' + keys.slice().reverse().map((k, i) => '<tr><td>' + k + '</td>' + used.map(f => '<td class="n">' + fmtM(agg[k][f]) + '</td>').join('') +
+    '<td class="n">' + fmtM(totals[keys.length - 1 - i]) + '</td></tr>').join('') + '</tbody></table>';
+}
+function roundTop(x, y, w, h, r) {
+  r = Math.min(r, h);
+  return 'M' + x + ',' + (y + h) + 'V' + (y + r) + 'Q' + x + ',' + y + ' ' + (x + r) + ',' + y + 'H' + (x + w - r) + 'Q' + (x + w) + ',' + y + ' ' + (x + w) + ',' + (y + r) + 'V' + (y + h) + 'Z';
+}
+function niceMax(v) {
+  if (v <= 0) return 1;
+  const p = Math.pow(10, Math.floor(Math.log10(v))), n = v / p;
+  return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * p;
+}
+
+// ---- model mix -----------------------------------------------------------
+function models(rows) {
+  const by = {};
+  let tc = 0;
+  for (const r of rows) {
+    const m = D.models[r[C.m]];
+    const a = by[m] || (by[m] = { calls: 0, tok: 0, cost: 0, fam: famOf[r[C.m]] });
+    a.calls++; a.tok += tokens(r); a.cost += r[C.cost]; tc += r[C.cost];
+  }
+  const list = Object.entries(by).sort((a, b) => b[1].cost - a[1].cost);
+  $('modelTable').innerHTML = '<table class="t"><thead><tr><th>Model</th><th class="n">Calls</th><th class="n">Tokens</th><th class="n">API-equiv</th><th class="n">Share</th></tr></thead><tbody>' +
+    list.map(([m, a]) => '<tr><td><i class="dot" style="background:' + FCOL[a.fam] + '"></i>' + esc(m.replace(/^claude-/, '').replace(/-\d{8}$/, '')) + '</td><td class="n">' + a.calls.toLocaleString('en-US') +
+      '</td><td class="n">' + fmtN(a.tok) + '</td><td class="n">' + fmtUSD(a.cost) + '</td><td class="n">' + fmtPct(a.cost / (tc || 1)) + '</td></tr>').join('') + '</tbody></table>';
+
+  const svg = $('sideChart');
+  svg.innerHTML = '';
+  const W = svg.clientWidth || 520, H = 150;
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  [['Main session', 0], ['Subagents', 1]].forEach(([label, side], gi) => {
+    const rs = rows.filter(r => r[C.side] === side);
+    const tot = rs.reduce((a, r) => a + metricOf(r), 0);
+    const yy = 22 + gi * 62;
+    el('text', { x: 0, y: yy - 6, style: 'fill:var(--text-muted)' }, svg).textContent = label + ' - ' + fmtM(tot) + (side && !state.side ? ' (hidden by filter)' : '');
+    let x = 0;
+    FAMS.forEach(f => {
+      const v = rs.filter(r => famOf[r[C.m]] === f).reduce((a, r) => a + metricOf(r), 0);
+      if (!v) return;
+      const w = (v / tot) * W;
+      const rect = el('rect', { x: x + (x ? 1 : 0), y: yy, width: Math.max(w - (x ? 2 : 0), 1), height: 22, rx: 4, fill: FCOL[f] }, svg);
+      if (w > 44) el('text', { x: x + 8, y: yy + 15, style: 'fill:#fff;font-weight:600' }, svg).textContent = fmtPct(v / tot);
+      rect.addEventListener('mousemove', ev => showTip(ev, label, [[f, fmtM(v), FCOL[f]], ['Share', fmtPct(v / tot)]]));
+      rect.addEventListener('mouseleave', hideTip);
+      x += w;
+    });
+    if (!tot) el('text', { x: 0, y: yy + 15 }, svg).textContent = 'No usage in this range';
+  });
+  const opus = list.filter(([, a]) => a.fam === 'Opus').reduce((s, [, a]) => s + a.cost, 0);
+  const opusCalls = list.filter(([, a]) => a.fam === 'Opus').reduce((s, [, a]) => s + a.calls, 0);
+  $('policy').innerHTML = '<strong>' + fmtPct(opusCalls / (rows.length || 1)) + '</strong> of API calls and <strong>' + fmtPct(opus / (tc || 1)) +
+    '</strong> of API-equivalent cost ran on Opus in this range. Main-session model comes from the model selector; subagent model from the <span class="mono">model</span> passed when spawning.';
+}
+
+// ---- projects & sessions -------------------------------------------------
+function projects(rows) {
+  const by = {};
+  for (const r of rows) {
+    const a = by[r[C.p]] || (by[r[C.p]] = { s: new Set(), calls: 0, tok: 0, cost: 0 });
+    a.s.add(r[C.s]); a.calls++; a.tok += tokens(r); a.cost += r[C.cost];
+  }
+  const list = Object.entries(by).sort((a, b) => b[1].cost - a[1].cost).slice(0, 15);
+  const max = list.length ? list[0][1].cost : 1;
+  $('projTable').innerHTML = '<table class="t"><thead><tr><th>Project</th><th class="n">Sessions</th><th class="n">Tokens</th><th class="n">API-equiv</th></tr></thead><tbody>' +
+    list.map(([p, a]) => '<tr><td class="wrap" title="' + esc(projFull(+p)) + '">' + esc(projName(+p)) +
+      '<div class="bars"><div class="track"><div class="fill" style="width:' + (a.cost / max * 100).toFixed(1) + '%"></div></div></div></td><td class="n">' + a.s.size +
+      '</td><td class="n">' + fmtN(a.tok) + '</td><td class="n">' + fmtUSD(a.cost) + '</td></tr>').join('') + '</tbody></table>';
+
+  const bs = {};
+  for (const r of rows) {
+    const a = bs[r[C.s]] || (bs[r[C.s]] = { t: r[C.t], calls: 0, cost: 0, sub: 0, fam: {} });
+    a.calls++; a.cost += r[C.cost]; if (r[C.side]) a.sub += r[C.cost];
+    const f = famOf[r[C.m]]; a.fam[f] = (a.fam[f] || 0) + r[C.cost];
+  }
+  const sl = Object.entries(bs).sort((a, b) => b[1].cost - a[1].cost).slice(0, 15);
+  $('sessTable').innerHTML = '<table class="t"><thead><tr><th>Session</th><th>Started</th><th class="n">Calls</th><th class="n">API-equiv</th></tr></thead><tbody>' +
+    sl.map(([s, a]) => {
+      const proj = (D.sessions[s] || ['', ''])[1];
+      const top = Object.entries(a.fam).sort((x, y) => y[1] - x[1])[0][0];
+      return '<tr><td class="wrap" title="' + esc(state.anon ? '' : proj) + '"><i class="dot" style="background:' + FCOL[top] + '"></i>' + esc(sessName(+s)) +
+        (a.sub ? ' <span class="dim">· ' + fmtPct(a.sub / a.cost) + ' subagents</span>' : '') + '</td><td class="dim">' + dayLabel(dayKey(a.t)) +
+        '</td><td class="n">' + a.calls + '</td><td class="n">' + fmtUSD(a.cost) + '</td></tr>';
+    }).join('') + '</tbody></table>';
+}
+
+// ---- tools, MCP, skills --------------------------------------------------
+function bars(id, entries, n = 12) {
+  const list = entries.sort((a, b) => b[1] - a[1]).slice(0, n);
+  const max = list.length ? list[0][1] : 1;
+  $(id).innerHTML = list.length ? list.map(([k, v]) =>
+    '<div class="row"><div><div class="lab" title="' + esc(k) + '">' + esc(k) + '</div><div class="track"><div class="fill" style="width:' + (v / max * 100).toFixed(1) +
+    '%"></div></div></div><div class="val">' + v.toLocaleString('en-US') + '</div></div>').join('') : '<p class="dim">None in this range</p>';
+}
+function tools(rows, start) {
+  const builtin = {}, mcp = {};
+  for (const r of rows) for (const ti of r[C.tools]) {
+    const name = D.tools[ti];
+    if (name.startsWith('MCP: ')) { const k = name.slice(5); mcp[k] = (mcp[k] || 0) + 1; }
+    else builtin[name] = (builtin[name] || 0) + 1;
+  }
+  bars('toolBars', Object.entries(builtin));
+  bars('mcpBars', Object.entries(mcp));
+  const sk = {};
+  const sessOk = new Set(rows.map(r => r[C.s]));
+  for (const [t, s, k] of D.skillEvents) if (t >= start && sessOk.has(s)) { const n = D.skills[k]; sk[n] = (sk[n] || 0) + 1; }
+  bars('skillBars', Object.entries(sk));
+}
+
+// ---- heatmap & cache -----------------------------------------------------
+function heat(rows) {
+  const svg = $('heat');
+  svg.innerHTML = '';
+  const W = svg.clientWidth || 520, H = 210, l = 34, t = 6, b = 20;
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+  const grid = Array.from({ length: 7 }, () => new Array(24).fill(0));
+  for (const r of rows) { const d = new Date(r[C.t] * 1000); grid[(d.getDay() + 6) % 7][d.getHours()]++; }
+  const max = Math.max(1, ...grid.flat());
+  const cw = (W - l) / 24, ch = (H - t - b) / 7;
+  grid.forEach((row, wi) => {
+    el('text', { x: l - 8, y: t + wi * ch + ch / 2 + 4, 'text-anchor': 'end' }, svg).textContent = WD[wi];
+    row.forEach((v, h) => {
+      const pct = v ? 12 + Math.round(88 * v / max) : 0;
+      const c = el('rect', { x: l + h * cw + 1, y: t + wi * ch + 1, width: cw - 2, height: ch - 2, rx: 3,
+        fill: v ? 'color-mix(in srgb, var(--blue) ' + pct + '%, var(--n1))' : 'var(--n2)' }, svg);
+      c.addEventListener('mousemove', ev => showTip(ev, WD[wi] + ' ' + String(h).padStart(2, '0') + ':00', [['API calls', v.toLocaleString('en-US')]]));
+      c.addEventListener('mouseleave', hideTip);
+    });
+  });
+  for (let h = 0; h < 24; h += 3) el('text', { x: l + h * cw + cw / 2, y: H - 4, 'text-anchor': 'middle' }, svg).textContent = String(h).padStart(2, '0');
+}
+function cache(rows) {
+  let inp = 0, cr = 0, c5 = 0, c1 = 0, save = 0;
+  for (const r of rows) { inp += r[C.in]; cr += r[C.cr]; c5 += r[C.c5]; c1 += r[C.c1]; save += r[C.save]; }
+  const all = inp + cr + c5 + c1;
+  const items = [
+    ['Cache hit rate', fmtPct(cr / (all || 1)), 'input tokens read from cache'],
+    ['Saved by caching', fmtUSD(save), 'vs paying full input price'],
+    ['Cache reads', fmtN(cr), 'tokens'],
+    ['Cache writes', fmtN(c5 + c1), fmtPct(c1 / ((c5 + c1) || 1)) + ' on the 1-hour TTL'],
+  ];
+  $('cacheStats').innerHTML = items.map(([k, v, s]) =>
+    '<div class="stat"><div class="eyebrow">' + k + '</div><div class="v">' + v + '</div><div class="s">' + s + '</div></div>').join('');
+}
+
+// ---- render --------------------------------------------------------------
+function render() {
+  if (!D) return;
+  const { rows, start } = filtered();
+  kpis(rows); daily(rows, start); models(rows); projects(rows); tools(rows, start); heat(rows); cache(rows);
+}
+function seg(id, key, parse) {
+  const root = $(id);
+  root.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    root.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    state[key] = parse(b.dataset.v); render();
+  });
+}
+seg('range', 'range', Number);
+seg('metric', 'metric', String);
+$('side').addEventListener('change', e => { state.side = e.target.checked; render(); });
+$('anon').addEventListener('change', e => { state.anon = e.target.checked; render(); });
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(render, 150); });
+$('foot').innerHTML = '<p>' + esc(PRICING.source) + '</p>';
+
+// Test hook: window.__loadFiles(fileArray) runs the same path as the folder picker.
+window.__loadFiles = load;
+})();
+</script>
+</body>
+</html>
